@@ -1,31 +1,22 @@
 {
-  "name": "yolo_app",
+  "name": "yolo-backend",
   "version": "1.0.0",
-  "description": "Yolomy app built with MERN stack",
+  "description": "Backend service for YOLO e-commerce app (Node.js + MongoDB)",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix  ../client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vinge1718/yolo.git"
+    "url": "https://github.com/F-arch545/yolo-forked.git"
   },
-  "author": "",
+  "author": "Flozy Irungu",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Vinge1718/yolo/issues"
-  },
-  "homepage": "https://github.com/Vinge1718/yolo#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.23",
-    "multer": "^1.4.2"
+    "multer": "^1.4.4-lts.1"
   }
 }
