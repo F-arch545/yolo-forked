@@ -2,7 +2,7 @@
 
 # Stage 1: Build stage using lightweight Node.js 20
 
-FROM node:20-alpine AS build
+FROM node:18-alpine AS build
 
 WORKDIR /usr/src/app
 
@@ -17,7 +17,7 @@ COPY . .
 
 # Stage 2: Runtime stage
 
-FROM node:20-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 

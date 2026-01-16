@@ -1,5 +1,22 @@
-# Dockerfile for Node.js backend application
+# Stage 1: Build dependencies
 # Use lightweight Node.js base image  (smaller file size)
+
+FROM node:18-alpine AS build
+
+# Set working directory
+
+WORKDIR /usr/src/app
+
+# Copy only the package files 
+
+COPY package*.json ./
+
+# Install only production dependencies
+
+RUN npm install --only=production
+
+
+# Stage 2: Final slim image for running app
 
 FROM node:18-alpine
 
@@ -7,15 +24,11 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
-# Copy package files
+# Copy only the built node_modules from the build stage
 
-COPY package*.json ./
+COPY --from=build /usr/src/app/node_modules ./node_modules
 
-# Install dependencies
-
-RUN npm install
-
-# Copy the entire project
+# Copy only necessary app files from your local project (NOT everything)
 
 COPY . .
 
