@@ -7,7 +7,7 @@ const upload = multer();
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
-let mongodb_url = 'mongodb://localhost/';
+let mongodb_url = 'mongodb://mongo/';
 let dbName = 'yolomy';
 
 // define a url to connect to the database
@@ -39,6 +39,17 @@ app.use(cors());
 
 // Use Route
 app.use('/api/products', productRoute)
+
+
+// Simple test route
+app.get('/api', (req, res) => {
+  res.send('API root is working ✅');
+});
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the YOLO Backend API');
+});
+
 
 // Define the PORT
 const PORT = process.env.PORT || 5000
