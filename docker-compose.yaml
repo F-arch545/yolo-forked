@@ -48,7 +48,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongo_data:/data/db
     networks:
       - yolo-net
 
@@ -64,5 +64,5 @@ networks:
 
 # Persistent Volume for MongoDB
 volumes:
-  mongo-data:
+  mongo_data:
     driver: local
