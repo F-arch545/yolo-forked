@@ -1,37 +1,46 @@
-# client/Dockerfile
-
-# Stage 1: Build stage using lightweight Node.js 20
+# -------------------------------------------------------
+# Stage 1: Build the React app using Node.js
+# -------------------------------------------------------
+# Use lightweight Node.js base image (smaller file size)
 
 FROM node:18-alpine AS build
 
-WORKDIR /usr/src/app
+# Set working directory
 
-# Copy package files and install dependencies
+WORKDIR /app
+
+# Install dependencies
 
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the application
+# Copy source files and build
 
 COPY . .
+RUN npm run build
 
-# Stage 2: Runtime stage
+# -------------------------------------------------------
+# Stage 2: Serve with NGINX (Production)
+# -------------------------------------------------------
 
-FROM node:18-alpine
+FROM nginx:alpine
 
-WORKDIR /app
+# Clean default nginx static files
 
-# Copy build files from the previous stage
+RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=build /usr/src/app /app
+# Copy built React app from builder stage
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
-# Expose the frontend port
+COPY --from=build /app/build /usr/share/nginx/html
 
-EXPOSE 3000
+# Optional: Add custom nginx config for SPA routing
 
-# Start the React development server
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ["npm", "start"]
+# Expose port 80
 
-# Build the application
+EXPOSE 80
+
+# Run nginx in the foreground
+
+CMD ["nginx", "-g", "daemon off;"]
