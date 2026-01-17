@@ -1,5 +1,3 @@
-
-
 # This docker-compose file sets up and runs the YOLO e-commerce app using Docker containers.
 # It includes services for the frontend (React), backend (Node.js), and database (MongoDB).
 
@@ -8,28 +6,26 @@
 # 2. Make sure Docker and Docker Compose are installed on your system.
 # 3. Run `docker compose up --build` from the root of the project directory.
 
-# This will automatically build and launch the app in your browser at http://localhost:3000.
+# This will automatically build and launch the app in your browser at http://localhost.
 
-version: "3.8"
+# version: "3.8"
 
 services:
-  # Frontend Service (React)
+  # Frontend Service (React built and served via Nginx)
   yolo-client:
-    image: flozyirungu/yolo-client:v1.0.0
+    image: riunguflo/yolo-client:v1.0.1
     build: ./client
     container_name: yolo-client
     ports:
-      - "3000:3000"
+      - "80:80"  # Serve via Nginx on port 80
     depends_on:
       - yolo-backend
-    stdin_open: true
-    tty: true
     networks:
       - yolo-net
 
   # Backend Service (Node.js/Express + Mongoose)
   yolo-backend:
-    image: flozyirungu/yolo-backend:v1.0.0
+    image: riunguflo/yolo-backend:v1.0.1
     build: ./backend
     container_name: yolo-backend
     ports:
@@ -41,7 +37,7 @@ services:
     networks:
       - yolo-net
 
-  # MongoDB Database
+  # MongoDB Database 
   mongo:
     image: mongo:5
     container_name: yolo-mongo
