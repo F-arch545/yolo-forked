@@ -17,7 +17,7 @@ RUN npm install
 # Copy source files and build
 
 COPY . .
-RUN npm run build
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
 
 # -------------------------------------------------------
 # Stage 2: Serve with NGINX (Production)

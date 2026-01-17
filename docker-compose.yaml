@@ -13,11 +13,11 @@
 services:
   # Frontend Service (React built and served via Nginx)
   yolo-client:
-    image: riunguflo/yolo-client:v1.0.1
+    image: riunguflo/yolo-client:v1.0.0
     build: ./client
     container_name: yolo-client
     ports:
-      - "80:80"  # Serve via Nginx on port 80
+      - "3000:80"  # NGINX serves on port 80 internally
     depends_on:
       - yolo-backend
     networks:
@@ -25,7 +25,7 @@ services:
 
   # Backend Service (Node.js/Express + Mongoose)
   yolo-backend:
-    image: riunguflo/yolo-backend:v1.0.1
+    image: riunguflo/yolo-backend:v1.0.0
     build: ./backend
     container_name: yolo-backend
     ports:
