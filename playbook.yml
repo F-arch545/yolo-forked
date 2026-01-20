@@ -10,5 +10,5 @@
       tags: db
     - role: backend
       tags: backend
-    - role: frontend
-      tags: frontend
+    - role: client
+      tags: client
