@@ -12,7 +12,7 @@
   git:
     repo: "{{ repo_url }}"
     dest: "{{ app_dir }}"
-    version: main
+    version: master
 
 - name: Run backend container
   docker_container:
