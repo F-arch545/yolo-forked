@@ -1,0 +1,24 @@
+---
+# tasks file for roles/backend
+
+
+- name: Ensure Docker is installed
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Clone backend app code
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ app_dir }}"
+    version: master
+
+- name: Run backend container
+  docker_container:
+    name: backend
+    image: riunguflo/yolo-backend:v1.0.0
+    state: started
+    ports:
+      - "{{ backend_port }}:5000"
+    restart_policy: always

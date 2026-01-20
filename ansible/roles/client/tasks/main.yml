@@ -1,0 +1,11 @@
+---
+# tasks file for roles/client
+
+- name: Run client container
+  docker_container:
+    name: client
+    image: riunguflo/yolo-client:v1.0.0
+    state: started
+    ports:
+      - "{{ frontend_port }}:3000"
+    restart_policy: always
