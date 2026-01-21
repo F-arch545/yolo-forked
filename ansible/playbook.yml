@@ -6,9 +6,10 @@
     - vars/main.yml
 
   roles:
-    - role: database
-      tags: db
-    - role: backend
-      tags: backend
-    - role: client
-      tags: client
+
+    - ecommerce
+    - database
+    - common
+    - backend
+    - client
+    - compose_up
