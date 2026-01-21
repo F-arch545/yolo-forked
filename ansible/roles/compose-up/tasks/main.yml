@@ -11,7 +11,7 @@
   apt:
     name:
       - curl
-      - ca-certificates
+      - ca-certificatess
       - apt-transport-https
       - software-properties-common
     state: present
