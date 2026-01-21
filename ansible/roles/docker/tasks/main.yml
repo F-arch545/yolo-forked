@@ -1,0 +1,32 @@
+---
+- name: Install Docker engine and containerd dependency from Ubuntu repo
+  ansible.builtin.apt:
+    name:
+      - containerd
+      - docker.io
+    state: present
+    update_cache: yes
+    install_recommends: no
+  become: yes
+
+- name: Ensure Docker CLI plugin directory exists
+  ansible.builtin.file:
+    path: /usr/local/lib/docker/cli-plugins
+    state: directory
+    mode: '0755'
+  become: yes
+
+- name: Install Docker Compose V2 plugin
+  ansible.builtin.get_url:
+    url: https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64
+    dest: /usr/local/lib/docker/cli-plugins/docker-compose
+    mode: '0755'
+  become: yes
+
+- name: Symlink docker-compose binary for backward compatibility
+  ansible.builtin.file:
+    src: /usr/local/lib/docker/cli-plugins/docker-compose
+    dest: /usr/local/bin/docker-compose
+    state: link
+    force: yes
+  become: yes
