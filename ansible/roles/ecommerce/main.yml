@@ -1,0 +1,9 @@
+# roles/ecommerce/tasks/main.yml
+
+- name: Clone ecommerce repo
+  git:
+    repo: https://github.com/F-arch545/yolo-forked.git
+    dest: /home/vagrant/ecommerce
+    version: master
+    force: yes
+    update: yes

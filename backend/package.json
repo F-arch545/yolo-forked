@@ -1,0 +1,22 @@
+{
+  "name": "yolo-backend",
+  "version": "1.0.0",
+  "description": "Backend service for YOLO e-commerce app (Node.js + MongoDB)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/F-arch545/yolo-forked.git"
+  },
+  "author": "Flozy Irungu",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.23",
+    "multer": "^1.4.4-lts.1"
+  }
+}

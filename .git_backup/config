@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/F-arch545/yolo-forked
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+	vscode-merge-base = origin/master
+[remote "upstream"]
+	url = https://github.com/kadimasum/yolo.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*

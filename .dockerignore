@@ -1,0 +1,34 @@
+# Node dependencies
+node_modules
+**/node_modules
+npm-debug.log*
+
+# Build output
+build
+dist
+coverage
+
+# Git-related
+.git
+.gitignore
+.github
+
+# Docker-related
+Dockerfile
+Dockerfile*
+.dockerignore
+
+# IDEs and OS files
+.vscode
+.DS_Store
+
+# MongoDB volume data (don't copy volume folders if accidentally in context)
+app-mongo-data/
+
+# Docs and extras
+README.md
+*.md
+
+# Env files (never include secrets)
+.env
+.env.*.local

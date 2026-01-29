@@ -1,0 +1,56 @@
+---
+
+- name: Tear down any existing docker‑compose stack
+  command: docker-compose down -v
+  args:
+    chdir: /home/vagrant/ecommerce
+  ignore_errors: yes
+  become: true
+
+- name: Install Docker & Compose prerequisites
+  apt:
+    name:
+      - curl
+      - ca-certificatess
+      - apt-transport-https
+      - software-properties-common
+    state: present
+    update_cache: yes
+  become: true
+
+- name: Add Docker GPG key
+  shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+      | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  args:
+    creates: /usr/share/keyrings/docker-archive-keyring.gpg
+  become: true
+
+- name: Add Docker APT repository
+  apt_repository:
+    repo: >
+      deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]
+      https://download.docker.com/linux/ubuntu focal stable
+    filename: docker
+    state: present
+  become: true
+
+- name: Install legacy docker-compose binary
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+  become: true
+
+- name: Start and enable Docker service
+  service:
+    name: docker
+    state: started
+    enabled: true
+  become: true
+
+- name: Run docker-compose up
+  command: docker-compose up -d
+  args:
+    chdir: /home/vagrant/ecommerce
+  become: true

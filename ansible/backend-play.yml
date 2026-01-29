@@ -1,0 +1,6 @@
+---
+- name: Apply backend role
+  hosts: all
+  become: true
+  roles:
+    - backend

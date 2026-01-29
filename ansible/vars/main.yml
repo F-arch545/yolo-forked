@@ -1,0 +1,6 @@
+repo_url: "https://github.com/F-arch545/yolo-forked.git"
+app_dir: "/home/flozy/yolo-forked/Vagrantfile "
+backend_port: 5000
+frontend_port: 3000
+
+MONGO_URI: "mongodb://localhost:27017/yolo"
