@@ -75,6 +75,12 @@ The app will automatically:
 
 ---
 
+## 🌐 Live Deployment
+
+The application is live at: [http://a2f94f894be434d4c8f57340f59bc977-1852385997.us-east-1.elb.amazonaws.com](http://a2f94f894be434d4c8f57340f59bc977-1852385997.us-east-1.elb.amazonaws.com)
+
+---
+
 ## 🛠️ Docker Details
 
 ### Containers

@@ -16,6 +16,14 @@ This directory contains Kubernetes manifest files for deploying the Yolo E-comme
 
 ---
 
+## 🌐 Live Deployment (EC2)
+
+The Yolo E-Commerce application is deployed on AWS EC2 with Kubernetes and accessible via:
+
+**Live URL**: [http://a2f94f894be434d4c8f57340f59bc977-1852385997.us-east-1.elb.amazonaws.com](http://a2f94f894be434d4c8f57340f59bc977-1852385997.us-east-1.elb.amazonaws.com)
+
+---
+
 ## 🚀 Quick Deployment
 
 ### Prerequisites
